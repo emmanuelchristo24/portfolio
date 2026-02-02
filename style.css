@@ -42,6 +42,15 @@ body.dark .skill-card { background: #252525; }
 .nav-links a:hover { color: #007bff; }
 #theme-toggle {
   background: none; border: none; font-size: 1.3rem; cursor: pointer;
+  margin-left: 20px;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 /* Hero */
@@ -137,7 +146,31 @@ footer { background: #222; color: white; text-align: center; padding: 30px; }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .nav-links { display: none; } /* You can add hamburger menu JS later if needed */
+  .hamburger { display: block; }
+  
+  .nav-links { 
+    display: none; /* Hidden by default on mobile */
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  /* When class 'active' is added via JS */
+  .nav-links.active {
+    display: flex;
+  }
+
+  /* Dark mode support for mobile menu */
+  body.dark .nav-links {
+    background: #1e1e1e;
+  }
+
   .about-grid { grid-template-columns: 1fr; }
   .hero-content h1 { font-size: 2.8rem; }
   .section { padding: 80px 0; }
